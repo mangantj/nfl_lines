@@ -2,7 +2,7 @@
 
 <div>
   <% @weeks.each do |week| %>
-    Week <%= week.week_num %>
+    <%= link_to 'Week ' + week.week_num.to_s, games_week_path(week.week_num) %>
     </br>
   <% end %>
 </div>

@@ -12,9 +12,9 @@
     </thead>
     <%= f.fields_for :games do |game_fields| %>
       <tr>
-        <td><%= game_fields.object.away_team_id %></td>
+        <td><%= Game::TEAM_NAME[game_fields.object.away_team_id.to_s] %></td>
         <td>vs.</td>
-        <td><%= game_fields.object.home_team_id %></td>
+        <td><%= Game::TEAM_NAME[game_fields.object.home_team_id.to_s] %></td>
         <%= game_fields.fields_for :picks do |f| %>
           <td><%= f.text_field :spread %></td>
         <% end %>
