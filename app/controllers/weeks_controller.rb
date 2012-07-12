@@ -1,5 +1,5 @@
 class WeeksController < ApplicationController
-  before_filter :current_year, :current_week, :current_user
+  before_filter :current_year, :current_week, :authenticate_user!
 
   def index
     @weeks = Week.find_all_by_year(@current_year)
@@ -8,7 +8,7 @@ class WeeksController < ApplicationController
   def games
     @week = Week.find(params[:id])
     @games = @week.games
-    @user = User.find(@current_user)
+    @user = current_user
     @week.games.each do |game|
       if game.picks.empty?
         game.picks.build
@@ -18,7 +18,7 @@ class WeeksController < ApplicationController
 
   def submit_user_picks
     @games = Game.find_all_by_week_id(params[:id])
-    @user = User.find(@current_user)
+    @user = current_user
     @week = Week.find(params[:id])
     @games.each_with_index do |game, index|
       params[:week][:games_attributes][index.to_s][:picks_attributes]['0'][:game_id] = game.id

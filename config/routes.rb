@@ -1,8 +1,9 @@
 NflLines::Application.routes.draw do
 
-  root :to => 'users#index'
+  devise_for :users
+
+  root :to => "weeks#index"
   
-  resources :users
   resources :weeks, :only => [:index] do
     member do 
       get "games"

@@ -10,8 +10,4 @@ class ApplicationController < ActionController::Base
     def current_week
       @current_week = 1
     end
-
-    def current_user
-      @current_user = 1
-    end
 end

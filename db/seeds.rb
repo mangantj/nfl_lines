@@ -6,7 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create(first_name: 'Tyler', last_name: 'Mangan', email: 'mango@gmail.com', password: 'admin')
 
 Week.create(year: '2012', start_date: '2012-05-09', end_date: '2012-10-09', week_num: 1)
 Week.create(year: '2012', start_date: '2012-13-09', end_date: '2012-17-09', week_num: 2)
