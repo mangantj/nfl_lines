@@ -1,0 +1,7 @@
+<h1>Week <%= games.week.id %></h1>
+
+<% form_for [@week, :games] do |f| %>
+  <% @games.each do |game| %>
+    <div>Game <%= game.id %> </div>
+  <% end %>
+<% end %>
