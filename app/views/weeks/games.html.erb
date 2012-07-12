@@ -10,12 +10,12 @@
         <td>Spread</td>
       </tr>
     </thead>
-    <% @games.each do |game| %>
+    <%= f.fields_for :games do |game_fields| %>
       <tr>
-        <td><%= game.away_team_id %></td>
+        <td><%= game_fields.object.away_team_id %></td>
         <td>vs.</td>
-        <td><%= game.home_team_id %></td>
-        <%= f.fields_for :picks do |f| %>
+        <td><%= game_fields.object.home_team_id %></td>
+        <%= game_fields.fields_for :picks do |f| %>
           <td><%= f.text_field :spread %></td>
         <% end %>
       </tr>

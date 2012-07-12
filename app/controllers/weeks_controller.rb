@@ -6,11 +6,13 @@ class WeeksController < ApplicationController
   end
 
   def games
-    @games = Game.find_all_by_week_id(params[:id])
-    @user = User.find(@current_user)
     @week = Week.find(params[:id])
-    if @week.picks.empty?
-      @week.picks.build 
+    @games = @week.games
+    @user = User.find(@current_user)
+    @week.games.each do |game|
+      if game.picks.empty?
+        game.picks.build
+      end
     end
   end
 
@@ -19,8 +21,8 @@ class WeeksController < ApplicationController
     @user = User.find(@current_user)
     @week = Week.find(params[:id])
     @games.each_with_index do |game, index|
-      params[:week][:picks_attributes][index.to_s][:game_id] = game.id
-      params[:week][:picks_attributes][index.to_s][:user_id] = @user.id
+      params[:week][:games_attributes][index.to_s][:picks_attributes]['0'][:game_id] = game.id
+      params[:week][:games_attributes][index.to_s][:picks_attributes]['0'][:user_id] = @user.id
     end
     if @week.update_attributes(params[:week])
       redirect_to games_week_path(@week)
