@@ -25,9 +25,11 @@ class WeeksController < ApplicationController
       params[:week][:games_attributes][index.to_s][:picks_attributes]['0'][:user_id] = @user.id
     end
     if @week.update_attributes(params[:week])
+      flash[:notice] = "The spreads were successfully saved"
       redirect_to games_week_path(@week)
     else
-      render 'games'
+      flash[:notice] = "Error saving the spreads"
+      render :action => 'games'
     end
   end
 end

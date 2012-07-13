@@ -56,8 +56,9 @@ a {
   border: solid 1px #C66;
 }
 
-.fieldWithErrors {
-  display: inline;
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
 }
 
 .error_messages {

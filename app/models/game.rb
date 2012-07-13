@@ -1,7 +1,7 @@
 class Game < ActiveRecord::Base
   belongs_to :week
-  has_many :picks, :dependent => :destroy
-  accepts_nested_attributes_for :picks
+  has_many :picks
+  accepts_nested_attributes_for :picks, :allow_destroy => true
   attr_accessible :week_id, :away_team_id, :home_team_id, :date, :picks_attributes
 
   TEAM_NAME = {
