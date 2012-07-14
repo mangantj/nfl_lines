@@ -1,8 +1,10 @@
 require 'factory_girl'
 
-FactoryGirl.define :pick do |f|
-  f.user_id 1
-  f.game_id 1
-  f.week_id 1
-  f.spread 4
+FactoryGirl.define do
+  factory :pick do |pick|
+    pick.user_id 1
+    pick.game_id 1
+    pick.week_id 1
+    pick.spread 4
+  end
 end
