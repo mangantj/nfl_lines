@@ -1,6 +1,13 @@
 <h1> Week <%= @current_week %> </h1>
 
 <%= form_for @week, :url => submit_user_picks_week_path(@week) do |f| %>
+  <% if @week.errors.any? %>
+    <div class="error_messages">
+      <% @week.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+    </div>
+  <% end %>
   <table>
     <thead>
       <tr>
