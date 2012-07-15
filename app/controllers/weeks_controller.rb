@@ -11,7 +11,7 @@ class WeeksController < ApplicationController
     @user = current_user
     @week.games.each do |game|
       if game.picks.empty?
-        game.picks.build
+        game.picks.build(:user_id => @user.id, :week_id => @week.id)
       end
     end
   end
@@ -20,10 +20,6 @@ class WeeksController < ApplicationController
     @games = Game.find_all_by_week_id(params[:id])
     @user = current_user
     @week = Week.find(params[:id])
-    @games.each_with_index do |game, index|
-      params[:week][:games_attributes][index.to_s][:picks_attributes]['0'][:game_id] = game.id
-      params[:week][:games_attributes][index.to_s][:picks_attributes]['0'][:user_id] = @user.id
-    end
     if @week.update_attributes(params[:week])
       flash[:notice] = "The spreads were successfully saved"
       redirect_to games_week_path(@week)
