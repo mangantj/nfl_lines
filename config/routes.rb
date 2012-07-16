@@ -4,11 +4,10 @@ NflLines::Application.routes.draw do
 
   root :to => "weeks#index"
   
-  resources :weeks, :only => [:index] do
+  resources :weeks, :only => :index do
     member do 
       get "games"
       put 'submit_user_picks'
     end
   end
-  resources :games
 end
