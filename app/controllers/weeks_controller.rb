@@ -21,10 +21,10 @@ class WeeksController < ApplicationController
     @user = current_user
     @week = Week.find(params[:id])
     if @week.update_attributes(params[:week])
-      flash[:notice] = "The spreads were successfully saved"
+      flash.now[:notice] = "The spreads were successfully saved"
       redirect_to games_week_path(@week)
     else
-      flash[:notice] = "Error saving the spreads"
+      flash.now[:notice] = "Error saving the spreads"
       render :action => 'games'
     end
   end

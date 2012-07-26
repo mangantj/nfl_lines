@@ -89,3 +89,7 @@ a {
   margin: 0;
 }
 
+#sign_out_link {
+  float:right;
+}
+

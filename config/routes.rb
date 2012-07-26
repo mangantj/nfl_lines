@@ -10,4 +10,5 @@ NflLines::Application.routes.draw do
       put 'submit_user_picks'
     end
   end
+  resources :users, :only => [:index, :destroy]
 end
